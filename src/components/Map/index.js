@@ -1,6 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { View, Dimensions, PermissionsAndroid } from "react-native";
-import MapView from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
+
+import markerImage from "../../assets/marker.png";
+
 import Search from "../Search";
 import Directions from "../Directions";
 import { getPixelSize } from "../../utils";
@@ -45,7 +48,9 @@ export default class Map extends Component {
         );
       }
     } else {
-      console.log("ACCESS_FINE_LOCATION permission denied");
+      await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
+      );
     }
   }
   handleLocationSelected = (data, { geometry }) => {
@@ -74,20 +79,27 @@ export default class Map extends Component {
           ref={el => (this.mapView = el)}
         >
           {destination && (
-            <Directions
-              origin={region}
-              destination={destination}
-              onReady={result => {
-                this.mapView.fitToCoordinates(result.coordinates, {
-                  edgePadding: {
-                    top: getPixelSize(50),
-                    bottom: getPixelSize(50),
-                    left: getPixelSize(50),
-                    right: getPixelSize(50)
-                  }
-                });
-              }}
-            />
+            <Fragment>
+              <Directions
+                origin={region}
+                destination={destination}
+                onReady={result => {
+                  this.mapView.fitToCoordinates(result.coordinates, {
+                    edgePadding: {
+                      top: getPixelSize(50),
+                      bottom: getPixelSize(50),
+                      left: getPixelSize(50),
+                      right: getPixelSize(50)
+                    }
+                  });
+                }}
+              />
+              <Marker
+                coordinate={destination}
+                anchor={{ x: 0, y: 0 }}
+                image={markerImage}
+              />
+            </Fragment>
           )}
         </MapView>
         <Search onLocationSelected={this.handleLocationSelected} />
