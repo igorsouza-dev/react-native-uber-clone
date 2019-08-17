@@ -57,7 +57,6 @@ export default class Map extends Component {
     const {
       location: { lat: latitude, lng: longitude }
     } = geometry;
-    console.log(this.state.region);
     this.setState({
       destination: {
         latitude,
