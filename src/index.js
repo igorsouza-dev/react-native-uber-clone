@@ -1,8 +1,9 @@
 import React from "react";
-import MapIndex from "./components/MapIndex";
+import Map from "./components/map/index";
+import { View } from "react-native";
 
 const App = () => {
-  return <MapIndex style={{ flex: 1 }} />;
+  return <Map style={{ flex: 1 }} />;
 };
 
 export default App;
