@@ -1,9 +1,8 @@
 import React from "react";
-import Map from "./components/map/index";
-import { View } from "react-native";
+import Map from "./components/Map";
 
 const App = () => {
-  return <Map style={{ flex: 1 }} />;
+  return <Map />;
 };
 
 export default App;

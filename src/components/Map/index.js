@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { View } from "react-native";
 import MapView from "react-native-maps";
-
-// import { Container } from './styles';
+import Search from "../Search";
 
 export default class Map extends Component {
   state = {
@@ -32,12 +31,15 @@ export default class Map extends Component {
   render() {
     const { region } = this.state;
     return (
-      <MapView
-        style={{ flex: 1 }}
-        region={region}
-        showsUserLocation
-        loadingEnabled
-      />
+      <View style={{ flex: 1 }}>
+        <MapView
+          style={{ flex: 1 }}
+          region={region}
+          showsUserLocation
+          loadingEnabled
+        />
+        <Search />
+      </View>
     );
   }
 }
