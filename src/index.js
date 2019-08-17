@@ -1,15 +1,8 @@
 import React from "react";
-
-import { View, Text } from "react-native";
-
-// import { Container } from './styles';
+import MapIndex from "./components/MapIndex";
 
 const App = () => {
-  return (
-    <View>
-      <Text>Hello world!</Text>
-    </View>
-  );
+  return <MapIndex style={{ flex: 1 }} />;
 };
 
 export default App;
