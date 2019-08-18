@@ -19,7 +19,7 @@ export default class Details extends Component {
         <TypeImage source={uberx} />
 
         <TypeTitle>UberX</TypeTitle>
-        <TypeDescription>R$6,00</TypeDescription>
+        <TypeDescription>R$ {this.props.price}</TypeDescription>
         <RequestButton onPress={() => {}}>
           <RequestButtonText>SOLICITAR UBERX</RequestButtonText>
         </RequestButton>

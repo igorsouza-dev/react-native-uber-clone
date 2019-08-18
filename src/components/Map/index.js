@@ -34,7 +34,8 @@ export default class Map extends Component {
     region: null,
     destination: null,
     duration: 0,
-    location: null
+    location: null,
+    travelPrice: null
   };
   async componentDidMount() {
     const granted = await PermissionsAndroid.check(
@@ -111,7 +112,9 @@ export default class Map extends Component {
                 origin={region}
                 destination={destination}
                 onReady={result => {
-                  this.setState({ duration: Math.floor(result.duration) });
+                  const d = Math.floor(result.duration);
+                  const price = (d * 1.23).toFixed(2);
+                  this.setState({ duration: d, travelPrice: price });
                   this.mapView.fitToCoordinates(result.coordinates, {
                     edgePadding: {
                       top: getPixelSize(50),
@@ -148,7 +151,7 @@ export default class Map extends Component {
             <Back onPress={this.handleBack}>
               <Image source={backImage} />
             </Back>
-            <Details />
+            <Details price={this.state.travelPrice} />
           </Fragment>
         ) : (
           <Search onLocationSelected={this.handleLocationSelected} />
