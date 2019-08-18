@@ -42,3 +42,9 @@ export const LocationTimeTextSmall = styled.Text`
   font-size: 10px;
   text-align: center;
 `;
+
+export const Back = styled.TouchableOpacity`
+  position: absolute;
+  top: ${Platform.select({ ios: 60, android: 40 })};
+  margin-left: 20px;
+`;
