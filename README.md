@@ -11,6 +11,10 @@ This app only have the basic funcionallity of the real app like showing a map wi
 - Draws the path to the destination.
 - Calculate the estimated value of the ride.
 
+<div align="center">
+    <img src="demo.gif" />
+</div>
+
 ## Requirements
 
 - You need to put a Google Maps API key in a `config.js` file in the `src` folder. Example: 
